@@ -1,23 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useRef } from 'react';
+import pacman from './pacman.png';
 import './App.css';
 
+const text = ['m', 'u', 'n', 'c', 'h', 'y'];
+
+
 function App() {
+  const pacRef = useRef<HTMLImageElement>(null);
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div className="muncher">
+          <div></div>
+          <img src={pacman} ref={pacRef} alt="muncher" />
+        </div>
+        {text.map((letter, i) => (
+          <span
+            className="food"
+            key={letter}
+          >
+            {letter}
+          </span>
+        ))}
       </header>
     </div>
   );
